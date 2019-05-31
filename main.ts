@@ -36,6 +36,13 @@ enum encPin {
     p14
 }
 
+enum MotorPower {
+    //%block="ON"
+    On = 28673,
+    //%block="OFF"
+    Off = 28672
+}
+
 
 control.onEvent(EventBusSource.MICROBIT_ID_IO_P0, EventBusValue.MICROBIT_EVT_ANY, function () {
     ticks += 1
@@ -47,7 +54,31 @@ namespace encMotor {
     //% ratio.defl=48
     //% sp.defl=50
     export function drive(ratio: number, le: encPin, re: encPin, mc: motorChoice, dir: motorDir, sp: number, rt: number) {
+        if(mc==2){
+            switch(dir){
+                case 0:
+                    forward(sp, rt);
+                    break;
+                case 1:
+                    reverse(sp, rt);
+                    break;
+                case 2:
+                    spin(sp, rt);
+                    break;
+            }
+        }
+    }
 
+    function forward(sp: number, rt: number){
+        pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
+    }
+
+    function reverse(sp: number, rt: number){
+        pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
+    }
+
+    function spin(sp: number, rt: number){
+        pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
     }
 
 
