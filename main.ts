@@ -8,10 +8,7 @@ let _rTurns: number = 0.0
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
-//pins.setPull(_lenc, PinPullMode.PullUp)
-//pins.setEvents(_lenc, PinEventType.Pulse)
-//pins.setPull(_renc, PinPullMode.PullUp)
-//pins.setEvents(_renc, PinEventType.Pulse)
+
 enum motorChoice {
     //% block="left"
     Left,
@@ -87,6 +84,10 @@ namespace encMotor {
         _ratio = ratio;
         _lenc = DigitalPin.P0;
         _renc = DigitalPin.P1;
+        pins.setPull(_lenc, PinPullMode.PullUp)
+        pins.setEvents(_lenc, PinEventType.Pulse)
+        pins.setPull(_renc, PinPullMode.PullUp)
+        pins.setEvents(_renc, PinEventType.Pulse)
         _partialTurn = (_ratio * 8) / 16;
         return undefined;
 
