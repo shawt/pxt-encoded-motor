@@ -100,17 +100,8 @@ namespace encMotor {
 
 
     export function drive(robot: Robot, dir: motorDir, rt: number) {
-        switch (dir) {
-            case 0:
-                forward(50, rt);
-                break;
-            case 1:
-                reverse(50, rt);
-                break;
-            case 2:
-                spin(50, rt);
-                break;
-        }
+
+        forward(50, rt);
 
     }
 
