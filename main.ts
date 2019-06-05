@@ -79,6 +79,8 @@ namespace encMotor {
 
 
     //% block="move %robot %dir for %rt Rotations"
+    //% blockSetVariable=robot
+    //% rt.defl=4
     export function drive(dir: motorDir, rt: number) {
         switch (dir) {
             case 0:
