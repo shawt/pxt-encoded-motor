@@ -52,22 +52,7 @@ enum MotorPower {
     Off = 28672
 }
 
-pins.onPulsed(_lenc, PulseValue.High, function () {
-    _lTicks += 1
-    if (_lTicks % _partialTurn == 0) {
-        _lTicks = 0;
-        _lTurns += .0625;
-    }
 
-})
-
-pins.onPulsed(_renc, PulseValue.High, function () {
-    _rTicks += 1
-    if (_rTicks % _partialTurn == 0) {
-        _rTicks = 0;
-        _rTurns += .0625;
-    }
-})
 
 
 namespace encMotor {
@@ -105,7 +90,7 @@ namespace encMotor {
 
     }
 
-    export function forward(sp: number, rt: number) {
+    function forward(sp: number, rt: number) {
         basic.showNumber(1)
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
         pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
