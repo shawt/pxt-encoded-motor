@@ -78,17 +78,17 @@ namespace encMotor {
     }
 
 
-    //% block="move $dir for $rt Rotations"
+    //% block="move %dir for %rt Rotations"
     export function drive(dir: motorDir, rt: number) {
         switch (dir) {
             case 0:
-                forward(sp, rt);
+                forward(50, rt);
                 break;
             case 1:
-                reverse(sp, rt);
+                reverse(50, rt);
                 break;
             case 2:
-                spin(sp, rt);
+                spin(50, rt);
                 break;
         }
 
