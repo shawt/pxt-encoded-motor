@@ -125,7 +125,7 @@ namespace encMotor {
 
     function pwr(dir: number, speed: number): number {
         let outPwr: number = 0
-        let pwr = 0
+       
         speed = Math.abs(speed)
         if (speed > 100) {
             speed = 100
@@ -133,7 +133,7 @@ namespace encMotor {
 
         if (dir == motorDir.fwd) {
             outPwr = pins.map(speed, 0, 100, 0, 127)
-            outPwr = 128 + pwr
+            outPwr = 128 + outPwr
         }
         else {
             outPwr = pins.map(speed, 0, 100, 127, 0)
