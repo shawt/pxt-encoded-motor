@@ -78,24 +78,20 @@ namespace encMotor {
     }
 
 
-    //% blockID="encodedMotor" block="Drive %robot Direction $dir Speed $sp Rotations $rt"
-    //% ratio.defl=48
-    //% sp.defl=50
-    export function drive(dir: motorDir, sp: number, rt: number) {
+    //% blockID="encodedMotor" block="move %robot Direction $dir for $rt Rotations"
+    export function drive(dir: motorDir, rt: number) {
+        switch (dir) {
+            case 0:
+                forward(sp, rt);
+                break;
+            case 1:
+                reverse(sp, rt);
+                break;
+            case 2:
+                spin(sp, rt);
+                break;
+        }
 
-        
-            switch (dir) {
-                case 0:
-                    forward(sp, rt);
-                    break;
-                case 1:
-                    reverse(sp, rt);
-                    break;
-                case 2:
-                    spin(sp, rt);
-                    break;
-            }
-        
     }
 
     function forward(sp: number, rt: number) {
