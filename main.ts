@@ -24,7 +24,9 @@ enum motorDir {
     //% block="Backward"
     bak,
     //% block="Spin"
-    sp
+    sp,
+    //% block="Stop"
+    st
 }
 
 enum encPin {
@@ -99,8 +101,11 @@ namespace encMotor {
      */
     //% block="move %robot=variables_get(robot) %dir for %rt Rotations"
     export function drive(robot: Robot, dir: motorDir, rt: number) {
-
-        forward(50, rt);
+        if(dir == motorDir.fwd){
+            forward(50, rt);
+        }
+        else{stop();}
+        
 
     }
 
@@ -125,6 +130,10 @@ namespace encMotor {
 
     function spin(sp: number, rt: number) {
         pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
+    }
+
+    function stop(){
+        pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
     function pwr(dir: number, speed: number): number {
