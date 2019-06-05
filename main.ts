@@ -111,8 +111,8 @@ namespace encMotor {
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
         pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
         pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
-        //while (_lTurns < rt) { };
-        //pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
+        while (_lTurns < rt) { };
+        pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
     function reverse(sp: number, rt: number) {
