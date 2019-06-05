@@ -77,10 +77,12 @@ namespace encMotor {
         return undefined;
     }
 
-
-    //% block="move %robot %dir for %rt Rotations"
+    /**
+     * Moves a robot based on wheel rotations
+     * @param rt indicates number of rotations eg:4
+     */
+    //% block="move %dir for %rt Rotations"
     //% blockSetVariable=robot
-    //% rt.defl=4
     export function drive(dir: motorDir, rt: number) {
         switch (dir) {
             case 0:
