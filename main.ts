@@ -1,13 +1,17 @@
 
 //% color="#AA278D"
-pins.setPull(DigitalPin.P0, PinPullMode.PullUp)
-pins.setEvents(DigitalPin.P0, PinEventType.Pulse)
-let lTicks: number = 0
-let rTicks: number = 0
-let lTurns: number = 0.0
-let rTurns: number = 0.0
-let lenc: DigitalPin
-let renc: DigitalPin
+
+let _lTicks: number = 0
+let _rTicks: number = 0
+let _lTurns: number = 0.0
+let _rTurns: number = 0.0
+let _lenc: DigitalPin
+let _renc: DigitalPin
+let _partialTurn: number = 0.0
+pins.setPull(_lenc, PinPullMode.PullUp)
+pins.setEvents(_lenc, PinEventType.Pulse)
+pins.setPull(_renc, PinPullMode.PullUp)
+pins.setEvents(_renc, PinEventType.Pulse)
 enum motorChoice {
     //% block="left"
     Left,
@@ -48,12 +52,21 @@ enum MotorPower {
     Off = 28672
 }
 
-pins.onPulsed(lenc, PulseValue.High, function () {
-    lTicks += 1
+pins.onPulsed(_lenc, PulseValue.High, function () {
+    _lTicks += 1
+    if (_lTicks % _partialTurn == 0) {
+        _lTicks = 0;
+        _lTurns += .0625;
+    }
+
 })
 
-pins.onPulsed(renc, PulseValue.High, function () {
-    rTicks += 1
+pins.onPulsed(_renc, PulseValue.High, function () {
+    _rTicks += 1
+    if (_rTicks % _partialTurn == 0) {
+        _rTicks = 0;
+        _rTurns += .0625;
+    }
 })
 
 
@@ -73,8 +86,10 @@ namespace encMotor {
     export function createRobot(ratio: number): Robot {
         _ratio = ratio;
         _lenc = DigitalPin.P0;
-        _renc = DigitalPin.P1
+        _renc = DigitalPin.P1;
+        _partialTurn = (_ratio * 8) / 16;
         return undefined;
+
     }
 
     /**
@@ -82,7 +97,7 @@ namespace encMotor {
      * @param rt indicates number of rotations eg:4
      */
     //% block="move %robot=variables_get(robot) %dir for %rt Rotations"
-    
+
 
     export function drive(robot: Robot, dir: motorDir, rt: number) {
         switch (dir) {
@@ -101,6 +116,10 @@ namespace encMotor {
 
     function forward(sp: number, rt: number) {
         pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
+        pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
+        pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
+        while (_lTurns < rt) { };
+        pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
     function reverse(sp: number, rt: number) {
