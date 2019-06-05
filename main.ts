@@ -49,7 +49,7 @@ enum MotorPower {
     Off = 28672
 }
 
-pins.onPulsed(_lenc, PulseValue.High, function () {
+pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
     _lTicks += 1
     if (_lTicks % _partialTurn == 0) {
         _lTicks = 0;
