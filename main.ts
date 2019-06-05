@@ -98,8 +98,6 @@ namespace encMotor {
      * @param rt indicates number of rotations eg:4
      */
     //% block="move %robot=variables_get(robot) %dir for %rt Rotations"
-
-
     export function drive(robot: Robot, dir: motorDir, rt: number) {
 
         forward(50, rt);
@@ -107,13 +105,13 @@ namespace encMotor {
     }
 
     function forward(sp: number, rt: number) {
-        basic.showNumber(1)
+       
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
         pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
         pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
-        while (_lTurns < rt) { };
-        //basic.showNumber(_lTicks);
-        //basic.pause(3000);
+        while (_lTurns < rt) { 
+            basic.showNumber(_lTurns)
+        };
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
