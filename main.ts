@@ -8,10 +8,10 @@ let _rTurns: number = 0.0
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
-pins.setPull(_lenc, PinPullMode.PullUp)
-pins.setEvents(_lenc, PinEventType.Pulse)
-pins.setPull(_renc, PinPullMode.PullUp)
-pins.setEvents(_renc, PinEventType.Pulse)
+//pins.setPull(_lenc, PinPullMode.PullUp)
+//pins.setEvents(_lenc, PinEventType.Pulse)
+//pins.setPull(_renc, PinPullMode.PullUp)
+//pins.setEvents(_renc, PinEventType.Pulse)
 enum motorChoice {
     //% block="left"
     Left,
@@ -52,7 +52,22 @@ enum MotorPower {
     Off = 28672
 }
 
+pins.onPulsed(_lenc, PulseValue.High, function () {
+    _lTicks += 1
+    if (_lTicks % _partialTurn == 0) {
+        _lTicks = 0;
+        _lTurns += .0625;
+    }
 
+})
+
+pins.onPulsed(_renc, PulseValue.High, function () {
+    _rTicks += 1
+    if (_rTicks % _partialTurn == 0) {
+        _rTicks = 0;
+        _rTurns += .0625;
+    }
+})
 
 
 namespace encMotor {
