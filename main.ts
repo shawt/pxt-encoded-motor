@@ -113,6 +113,8 @@ namespace encMotor {
             basic.showNumber(_lTurns)
         };
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
+        _lTurns = 0;
+        _rTurns = 0;
     }
 
     function reverse(sp: number, rt: number) {
