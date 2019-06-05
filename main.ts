@@ -58,7 +58,7 @@ pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
 
 })
 
-pins.onPulsed(_renc, PulseValue.High, function () {
+pins.onPulsed(DigitalPin.P1, PulseValue.High, function () {
     _rTicks += 1
     if (_rTicks % _partialTurn == 0) {
         _rTicks = 0;
@@ -111,9 +111,9 @@ namespace encMotor {
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
         pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
         pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
-        //while (_lTurns < rt) { };
-        basic.showNumber(_lTicks);
-        basic.pause(3000);
+        while (_lTurns < rt) { };
+        //basic.showNumber(_lTicks);
+        //basic.pause(3000);
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
