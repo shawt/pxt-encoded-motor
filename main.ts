@@ -116,7 +116,7 @@ namespace encMotor {
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
         pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
         pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
-        while (_lTurns <= rt) {
+        while (_lTurns <= rt-0.129) {
             basic.pause(100)
         };
 
