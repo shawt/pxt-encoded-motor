@@ -100,11 +100,11 @@ namespace encMotor {
      */
     //% block="move %robot=variables_get(robot) %dir for %rt Rotations"
     export function drive(robot: Robot, dir: motorDir, rt: number) {
-        if(dir == motorDir.fwd){
+        if (dir == motorDir.fwd) {
             forward(50, rt);
         }
-        else{stop();}
-        
+        else { stop(); }
+
 
     }
 
@@ -117,7 +117,7 @@ namespace encMotor {
         pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
         pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
         while (_lTurns < rt) {
-            
+            basic.pause(100)
         };
         basic.showNumber(_lTurns)
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
@@ -132,7 +132,7 @@ namespace encMotor {
         pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
     }
 
-    function stop(){
+    function stop() {
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
