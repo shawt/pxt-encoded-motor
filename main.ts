@@ -120,7 +120,7 @@ namespace encMotor {
             basic.pause(100)
         };
 
-        pins.i2cWriteNumber(89, 28672, NumberFormat.Int16BE)//stop motors
+        pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
         basic.showNumber(_lTurns)
 
     }
