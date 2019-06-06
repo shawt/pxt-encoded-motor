@@ -51,16 +51,15 @@ enum MotorPower {
     Off = 28672
 }
 
-pins.onPulsed(DigitalPin.P0, PulseValue.High, function () {
+control.onEvent(EventBusSource.MICROBIT_ID_IO_P0, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
     _lTicks += 1
     if (_lTicks % _partialTurn == 0) {
         _lTicks = 0;
         _lTurns += .0625;
     }
-
 })
 
-pins.onPulsed(DigitalPin.P1, PulseValue.High, function () {
+control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
     _rTicks += 1
     if (_rTicks % _partialTurn == 0) {
         _rTicks = 0;
@@ -87,9 +86,9 @@ namespace encMotor {
         _lenc = DigitalPin.P0;
         _renc = DigitalPin.P1;
         pins.setPull(_lenc, PinPullMode.PullUp)
-        pins.setEvents(_lenc, PinEventType.Pulse)
+        pins.setEvents(_lenc, PinEventType.Edge)
         pins.setPull(_renc, PinPullMode.PullUp)
-        pins.setEvents(_renc, PinEventType.Pulse)
+        pins.setEvents(_renc, PinEventType.Edge)
         _partialTurn = (_ratio * 2) / 16
         return undefined;
 
