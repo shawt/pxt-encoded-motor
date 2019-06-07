@@ -108,18 +108,32 @@ namespace encMotor {
         while (_lTurns < rt && _rTurns < rt) {
             basic.pause(100)
         }
-        stop(robot)
+        stop()
 
     }
 
     //% block="drive %motorChoice motor(s) %motorDir for %tm secs."
     //% tm.defl=5
-    export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number) {
-
+    export function driveWtime(motor: motorChoice, dir: motorDir, tm: number) {
+        _lTurns = 0;
+        _rTurns = 0;
+        _lTicks = 0;
+        _rTicks = 0;
+        if (motor == motorChoice.Both) {
+            motorGo(50, 8448, dir) //start left motor
+            motorGo(50, 8192, dir) //start right motor
+        }
+        else { motorGo(50, motor, dir) }
+        basic.pause(tm * 1000)
+        stop()
+        _lTurns = 0;
+        _rTurns = 0;
+        _lTicks = 0;
+        _rTicks = 0;
     }
 
-    //% block="stop %robot=variables_get(robot)"
-    export function stop(robot: Robot) {
+    //% block="stop motors"
+    export function stop() {
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
         motorGo(0, 8448, 0) //set left speed to 0
         motorGo(0, 8192, 0) //set right speed to 0
@@ -132,25 +146,22 @@ namespace encMotor {
 
 
 
-    function forwardTime(sp: number, time: number = 0.0) {
-        _lTurns = 0;
-        _rTurns = 0;
-        _lTicks = 0;
-        _rTicks = 0;
+    function forwardTime(sp: number, mt: number, dir: number) {
+
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
-        pins.i2cWriteNumber(89, (8448 + pwr(0, 50)), NumberFormat.Int16BE) //start left motor
-        pins.i2cWriteNumber(89, (8192 + pwr(0, 50)), NumberFormat.Int16BE) //start right motor
+        pins.i2cWriteNumber(89, (8448 + pwr(0, sp)), NumberFormat.Int16BE) //start left motor
+        pins.i2cWriteNumber(89, (8192 + pwr(0, sp)), NumberFormat.Int16BE) //start right motor
         basic.pause(time * 1000)
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
-        basic.showNumber(_lTurns)
+        pins.i2cWriteNumber(89, (8448 + pwr(0, 0)), NumberFormat.Int16BE) //left speed to 0
+        pins.i2cWriteNumber(89, (8192 + pwr(0, 0)), NumberFormat.Int16BE) //right speed to 0
+
         _lTurns = 0;
         _rTurns = 0;
         _lTicks = 0;
         _rTicks = 0;
 
     }
-
-
 
     function pwr(dir: number, speed: number): number {
         let outPwr: number = 0
