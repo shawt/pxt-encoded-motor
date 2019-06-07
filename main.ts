@@ -101,8 +101,8 @@ namespace encMotor {
         _lTicks = 0;
         _rTicks = 0;
         if (motor == motorChoice.Both) {
-            motorGo(50, 0, dir)
-            motorGo(50, 1, dir)
+            motorGo(50, 8448, dir) //start left motor
+            motorGo(50, 8192, dir) //start right motor
         }
         else { motorGo(50, motor, dir) }
         while (_lTurns < rt && _rTurns < rt) {
