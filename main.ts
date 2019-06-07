@@ -107,9 +107,9 @@ namespace encMotor {
     }
 
     //% block="drive %motorChoice motor(s) %motorDir for %tm secs."
-    //% tm.defl=0.0
-    export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number){
-        
+    //% tm.defl = 50
+    export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number) {
+
     }
 
     //% block="stop %robot=variables_get(robot)"
@@ -142,7 +142,7 @@ namespace encMotor {
         pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
     }
 
-    function forwardTime(sp: number, time: number=0.0) {
+    function forwardTime(sp: number, time: number = 0.0) {
         _lTurns = 0;
         _rTurns = 0;
         _lTicks = 0;
