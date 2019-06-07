@@ -121,8 +121,8 @@ namespace encMotor {
     //% block="stop %robot=variables_get(robot)"
     export function stop(robot: Robot) {
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
-        motorGo(0, 8448, dir) //stop left motor
-        motorGo(0, 8192, dir) //stop right motor
+        motorGo(0, 8448, 0) //stop left motor
+        motorGo(0, 8192, 0) //stop right motor
     }
 
     function motorGo(sp: number, mt: number, dir: number) {
