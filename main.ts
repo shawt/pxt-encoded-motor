@@ -107,7 +107,7 @@ namespace encMotor {
     }
 
     //% block="drive %robot=variables_get(robot) %motorChoice motor(s) %motorDir for %time secs."
-    export function driveWtime(robot: Robot, motorChoice: motorChoice, motorDir: motorDir){
+    export function driveWtime(robot: Robot, motorChoice: motorChoice, motorDir: motorDir, time: number){
         
     }
 
