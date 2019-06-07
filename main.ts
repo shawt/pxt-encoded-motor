@@ -11,11 +11,11 @@ let _partialTurn: number = 0.0
 
 enum motorChoice {
     //% block="left"
-    Left,
+    Left = 8448,
     //% block="right"
-    Right,
+    Right = 8192,
     //% block="both"
-    Both
+    Both = 5555
 }
 
 enum motorDir {
@@ -95,7 +95,7 @@ namespace encMotor {
      * @param rt indicates number of rotations eg:4
      */
     //% block="move %robot=variables_get(robot) %motor %dir for %rt Rotations"
-    export function drive(robot: Robot, motor: motorChoice, dir: motorDir,rt: number) {
+    export function drive(robot: Robot, motor: motorChoice, dir: motorDir, rt: number) {
         _lTurns = 0;
         _rTurns = 0;
         _lTicks = 0;
@@ -105,7 +105,7 @@ namespace encMotor {
             motorGo(50, 1, dir)
         }
         else { motorGo(50, motor, dir) }
-        while(_lTurns < rt && _rTurns < rt){
+        while (_lTurns < rt && _rTurns < rt) {
             basic.pause(100)
         }
         stop(robot)
@@ -115,7 +115,7 @@ namespace encMotor {
     //% block="drive %motorChoice motor(s) %motorDir for %tm secs."
     //% tm.defl=5
     export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number) {
-        
+
     }
 
     //% block="stop %robot=variables_get(robot)"
@@ -128,7 +128,7 @@ namespace encMotor {
         pins.i2cWriteNumber(89, mt + pwr(dir, sp), NumberFormat.Int16BE) //start designated motor
     }
 
-    
+
 
     function forwardTime(sp: number, time: number = 0.0) {
         _lTurns = 0;
