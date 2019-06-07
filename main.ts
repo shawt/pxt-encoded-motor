@@ -125,7 +125,7 @@ namespace encMotor {
 
     function motorGo(sp: number, mt: number, dir: number) {
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
-        pins.i2cWriteNumber(89, mt + pwr(dir, sp), NumberFormat.Int16BE) //start designated motor
+        pins.i2cWriteNumber(89, (mt + pwr(dir, sp)), NumberFormat.Int16BE) //start designated motor
     }
 
 
@@ -136,8 +136,8 @@ namespace encMotor {
         _lTicks = 0;
         _rTicks = 0;
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
-        pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
-        pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
+        pins.i2cWriteNumber(89, (8448 + pwr(0, 50)), NumberFormat.Int16BE) //start left motor
+        pins.i2cWriteNumber(89, (8192 + pwr(0, 50)), NumberFormat.Int16BE) //start right motor
         basic.pause(time * 1000)
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
         basic.showNumber(_lTurns)
