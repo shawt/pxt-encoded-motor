@@ -22,9 +22,7 @@ enum motorDir {
     //% block="Forward"
     fwd,
     //% block="Backward"
-    bak,
-    //% block="Spin"
-    sp
+    bak
 }
 
 enum encPin {
@@ -96,20 +94,28 @@ namespace encMotor {
      * Moves a robot based on wheel rotations
      * @param rt indicates number of rotations eg:4
      */
-    //% block="move %robot=variables_get(robot) %dir for %rt Rotations"
-    export function drive(robot: Robot, dir: motorDir, rt: number) {
-        if (dir == motorDir.fwd) {
-            forwardTurns(50, rt);
+    //% block="move %robot=variables_get(robot) %motor %dir for %rt Rotations"
+    export function drive(robot: Robot, motor: motorChoice, dir: motorDir,rt: number) {
+        _lTurns = 0;
+        _rTurns = 0;
+        _lTicks = 0;
+        _rTicks = 0;
+        if (motor == motorChoice.Both) {
+            motorGo(50, 0, dir)
+            motorGo(50, 1, dir)
         }
-        else { stop(robot); }
-
+        else { motorGo(50, motor, dir) }
+        while(_lTurns < rt && _rTurns < rt){
+            basic.pause(100)
+        }
+        stop(robot)
 
     }
 
     //% block="drive %motorChoice motor(s) %motorDir for %tm secs."
-    //% tm.defl = 50
+    //% tm.defl=5
     export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number) {
-
+        
     }
 
     //% block="stop %robot=variables_get(robot)"
@@ -117,30 +123,12 @@ namespace encMotor {
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
     }
 
-    function forwardTurns(sp: number, rt: number) {
-        _lTurns = 0;
-        _rTurns = 0;
-        _lTicks = 0;
-        _rTicks = 0;
+    function motorGo(sp: number, mt: number, dir: number) {
         pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
-        pins.i2cWriteNumber(89, 8448 + pwr(0, 50), NumberFormat.Int16BE) //start left motor
-        pins.i2cWriteNumber(89, 8192 + pwr(0, 50), NumberFormat.Int16BE) //start right motor
-        while (_lTurns <= rt - 0.129) {
-            basic.pause(100)
-        };
-
-        pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
-        basic.showNumber(_lTurns)
-
+        pins.i2cWriteNumber(89, mt + pwr(dir, sp), NumberFormat.Int16BE) //start designated motor
     }
 
-    function reverseTurns(sp: number, rt: number) {
-        pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
-    }
-
-    function spinTurns(sp: number, rt: number) {
-        pins.i2cWriteNumber(89, MotorPower.On, NumberFormat.Int16BE) //enable motors
-    }
+    
 
     function forwardTime(sp: number, time: number = 0.0) {
         _lTurns = 0;
