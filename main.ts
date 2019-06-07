@@ -107,7 +107,8 @@ namespace encMotor {
     }
 
     //% block="drive %motorChoice motor(s) %motorDir for %time secs."
-    export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, time: number){
+    //% time.defl= 0.0
+    export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number){
         
     }
 
