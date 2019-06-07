@@ -106,8 +106,8 @@ namespace encMotor {
 
     }
 
-    //% block="drive %motorChoice motor(s) %motorDir for %time secs."
-    
+    //% block="drive %motorChoice motor(s) %motorDir for %tm secs."
+    //% tm.defl=0.0
     export function driveWtime(motorChoice: motorChoice, motorDir: motorDir, tm: number){
         
     }
