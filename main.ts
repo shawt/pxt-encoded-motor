@@ -146,22 +146,7 @@ namespace encMotor {
 
 
 
-    function forwardTime(sp: number, mt: number, dir: number) {
-
-        pins.i2cWriteNumber(89, 28673, NumberFormat.Int16BE) //enable motors
-        pins.i2cWriteNumber(89, (8448 + pwr(0, sp)), NumberFormat.Int16BE) //start left motor
-        pins.i2cWriteNumber(89, (8192 + pwr(0, sp)), NumberFormat.Int16BE) //start right motor
-        basic.pause(time * 1000)
-        pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
-        pins.i2cWriteNumber(89, (8448 + pwr(0, 0)), NumberFormat.Int16BE) //left speed to 0
-        pins.i2cWriteNumber(89, (8192 + pwr(0, 0)), NumberFormat.Int16BE) //right speed to 0
-
-        _lTurns = 0;
-        _rTurns = 0;
-        _lTicks = 0;
-        _rTicks = 0;
-
-    }
+    
 
     function pwr(dir: number, speed: number): number {
         let outPwr: number = 0
