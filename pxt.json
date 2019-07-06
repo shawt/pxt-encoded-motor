@@ -10,7 +10,8 @@
         "README.md",
         "main.ts",
         "motorEnc.ts",
-        "gamerBit.ts"
+        "gamerBit.ts",
+        "ultrasonic.ts"
     ],
     "testFiles": [
         "test.ts"
