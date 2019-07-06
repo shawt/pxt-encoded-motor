@@ -8,7 +8,7 @@ const enum DistanceUnit {
     INCH = 148 // Duration of echo round-trip in Microseconds (uS) for two inches, 343 m/s at sea level and 20°C
 }
 
-namespace makerbit {
+namespace Ultrasonic {
     const MAX_ULTRASONIC_TRAVEL_TIME = 300 * DistanceUnit.CM;
     const ULTRASONIC_MEASUREMENTS = 3;
 
@@ -30,7 +30,6 @@ namespace makerbit {
      * @param trig pin connected to trig, eg: DigitalPin.P5
      * @param echo pin connected to echo, eg: DigitalPin.P8
      */
-    //% subcategory="Ultrasonic"
     //% blockId="makerbit_ultrasonic_connect"
     //% block="connect ultrasonic distance sensor | with Trig at %trig | and Echo at %echo"
     //% trig.fieldEditor="gridpicker"
@@ -75,7 +74,6 @@ namespace makerbit {
      * -1 is returned when the device is not connected.
      * @param unit unit of distance, eg: DistanceUnit.CM
      */
-    //% subcategory="Ultrasonic"
     //% blockId="makerbit_ultrasonic_distance"
     //% block="ultrasonic distance in %unit"
     //% weight=60
@@ -92,7 +90,6 @@ namespace makerbit {
      * @param distance distance to object, eg: 10
      * @param unit unit of distance, eg: DistanceUnit.CM
      */
-    //% subcategory="Ultrasonic"
     //% blockId="makerbit_ultrasonic_less_than"
     //% block="ultrasonic distance is less than |%distance|%unit"
     //% weight=50
