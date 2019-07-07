@@ -106,6 +106,7 @@ namespace encMotor {
         _lTicks = 0;
         _rTicks = 0;
         _baseSp = 50;
+        let lSpeed = _baseSp
         let correction = 0;
         if (motor == motorChoice.Both) {
             motorGo(_baseSp, 8448, dir) //start left motor
@@ -115,7 +116,8 @@ namespace encMotor {
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
             if (motor == motorChoice.Both){
                 correction = (_lTicks - _rTicks) / _kp;
-                motorGo(_baseSp + correction, 8448, dir) //correct left motor 
+                lSpeed += correction;
+                motorGo(lSpeed, 8448, dir) //correct left motor 
             }   
             basic.pause(100)
         }
