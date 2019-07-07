@@ -109,6 +109,8 @@ namespace encMotor {
         _rTurns = 0;
         _lTicks = 0;
         _rTicks = 0;
+        _lerrTicks = 0;
+        _rerrTicks = 0;
         _baseSp = 50;
         let lSpeed = _baseSp;
         let correction = 0;
