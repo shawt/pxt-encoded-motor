@@ -113,7 +113,7 @@ namespace encMotor {
         _rerrTicks = 0;
         _baseSp = 50;
         let lSpeed = _baseSp;
-        let correction = 0;
+        let correction = 0.0;
         if (motor == motorChoice.Both) {
             motorGo(_baseSp, 8448, dir) //start left motor
             motorGo(_baseSp, 8192, dir) //start right motor
