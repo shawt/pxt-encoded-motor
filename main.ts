@@ -5,6 +5,8 @@ let _lTicks: number = 0
 let _rTicks: number = 0
 let _lTurns: number = 0.0
 let _rTurns: number = 0.0
+let _lerrTicks: number = 0
+let _rerrTicks: number = 0
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
@@ -48,17 +50,19 @@ enum MotorPower {
 }
 
 control.onEvent(EventBusSource.MICROBIT_ID_IO_P0, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
-    _lTicks += 1
+    _lTicks += 1;
+    _lerrTicks += 1;
     if (_lTicks % _partialTurn == 0) {
-        //_lTicks = 0;
+        _lTicks = 0;
         _lTurns += .0625;
     }
 })
 
 control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
-    _rTicks += 1
+    _rTicks += 1;
+    _rerrTicks += 1;
     if (_rTicks % _partialTurn == 0) {
-        //_rTicks = 0;
+        _rTicks = 0;
         _rTurns += .0625;
     }
 })
@@ -106,7 +110,7 @@ namespace encMotor {
         _lTicks = 0;
         _rTicks = 0;
         _baseSp = 50;
-        let lSpeed = _baseSp
+        let lSpeed = _baseSp;
         let correction = 0;
         if (motor == motorChoice.Both) {
             motorGo(_baseSp, 8448, dir) //start left motor
@@ -115,7 +119,7 @@ namespace encMotor {
         else { motorGo(50, motor, dir) }
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
             if (motor == motorChoice.Both) {
-                correction = (_lTicks - _rTicks) / _kp;
+                correction = (_lerrTicks - _rerrTicks) / _kp;
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor 
             }
