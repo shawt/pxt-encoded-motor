@@ -50,7 +50,7 @@ enum MotorPower {
 control.onEvent(EventBusSource.MICROBIT_ID_IO_P0, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
     _lTicks += 1
     if (_lTicks % _partialTurn == 0) {
-        _lTicks = 0;
+        //_lTicks = 0;
         _lTurns += .0625;
     }
 })
@@ -58,7 +58,7 @@ control.onEvent(EventBusSource.MICROBIT_ID_IO_P0, EventBusValue.MICROBIT_PIN_EVT
 control.onEvent(EventBusSource.MICROBIT_ID_IO_P1, EventBusValue.MICROBIT_PIN_EVT_RISE, function () {
     _rTicks += 1
     if (_rTicks % _partialTurn == 0) {
-        _rTicks = 0;
+        //_rTicks = 0;
         _rTurns += .0625;
     }
 })
