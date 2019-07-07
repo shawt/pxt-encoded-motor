@@ -135,6 +135,20 @@ namespace encMotor {
         _rTicks = 0;
     }
 
+    //% block="drive %motorChoice motor(s) %motorDir"
+    export function driveIndef(motor: motorChoice, dir: motorDir) {
+        stop();
+        _lTurns = 0;
+        _rTurns = 0;
+        _lTicks = 0;
+        _rTicks = 0;
+        if (motor == motorChoice.Both) {
+            motorGo(50, 8448, dir) //start left motor
+            motorGo(50, 8192, dir) //start right motor
+        }
+        else { motorGo(50, motor, dir) }
+    }
+
     //% block="stop motors"
     export function stop() {
         pins.i2cWriteNumber(89, MotorPower.Off, NumberFormat.Int16BE)//stop motors
