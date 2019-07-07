@@ -90,7 +90,7 @@ namespace encMotor {
         pins.setEvents(_lenc, PinEventType.Edge)
         pins.setPull(_renc, PinPullMode.PullUp)
         pins.setEvents(_renc, PinEventType.Edge)
-        _partialTurn = (_ratio * 16) / 16
+        _partialTurn = (_ratio * 4) / 16
         return undefined;
 
     }
