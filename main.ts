@@ -75,7 +75,7 @@ namespace encMotor {
     let _lenc: DigitalPin;
     let _renc: DigitalPin;
     let _baseSp: number;
-    let _kp: number = 1.5;
+    let _kp: number = 4;
     /**
      * Creates a robot and automtically set it to a variable
      * @param ratio gives the motor to wheel turn ratio eg:48
@@ -114,11 +114,11 @@ namespace encMotor {
         }
         else { motorGo(50, motor, dir) }
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
-            if (motor == motorChoice.Both){
+            if (motor == motorChoice.Both) {
                 correction = (_lTicks - _rTicks) / _kp;
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor 
-            }   
+            }
             basic.pause(100)
         }
         stop()
