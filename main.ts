@@ -5,8 +5,8 @@ let _lTicks: number = 0
 let _rTicks: number = 0
 let _lTurns: number = 0.0
 let _rTurns: number = 0.0
-let _lerrTicks: number = 0
-let _rerrTicks: number = 0
+let _lerrTicks: number = 0;
+let _rerrTicks: number = 0;
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
@@ -125,7 +125,7 @@ namespace encMotor {
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor 
             }
-            basic.pause(100)
+            basic.pause(200)
         }
         stop()
 
