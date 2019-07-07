@@ -112,7 +112,7 @@ namespace encMotor {
             motorGo(_baseSp, 8192, dir) //start right motor
         }
         else { motorGo(50, motor, dir) }
-        while (_lTurns < (rt + .06) && _rTurns < (rt + .06)) {
+        while (_lTurns < (rt + .055) && _rTurns < (rt + .055)) {
             correction = (_lTicks - _rTicks) / _kp;
             motorGo(_baseSp + correction, 8448, dir) //correct left motor 
             basic.pause(100)
