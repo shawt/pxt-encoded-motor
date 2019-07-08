@@ -129,9 +129,7 @@ namespace encMotor {
             basic.pause(100)
         }
         stop()
-        //basic.showNumber(_lerrTicks);
-        //basic.showString("---");
-        //basic.showNumber(_rerrTicks);
+
 
     }
 
@@ -155,18 +153,21 @@ namespace encMotor {
         _rTicks = 0;
     }
 
-    //% block="drive %motorChoice motor(s) %motorDir"
-    export function driveIndef(motor: motorChoice, dir: motorDir) {
+    //% block="drive %motorChoice motor(s) %motorDir %power"
+    //% power.defl=50
+    //% power.min = 0
+    //% power.max = 100
+    export function driveIndef(motor: motorChoice, dir: motorDir, power: number) {
         stop();
         _lTurns = 0;
         _rTurns = 0;
         _lTicks = 0;
         _rTicks = 0;
         if (motor == motorChoice.Both) {
-            motorGo(50, 8448, dir) //start left motor
-            motorGo(50, 8192, dir) //start right motor
+            motorGo(power, 8448, dir) //start left motor
+            motorGo(power, 8192, dir) //start right motor
         }
-        else { motorGo(50, motor, dir) }
+        else { motorGo(power, motor, dir) }
     }
 
     //% block="stop motors"
