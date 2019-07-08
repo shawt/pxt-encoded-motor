@@ -122,7 +122,7 @@ namespace encMotor {
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
             if (motor == motorChoice.Both) {
                 correction = (_lerrTicks - _rerrTicks) / _kp;
-                lSpeed += correction;
+                lSpeed -= correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor 
             }
             basic.pause(100)
