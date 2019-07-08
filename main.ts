@@ -153,7 +153,7 @@ namespace encMotor {
         _rTicks = 0;
     }
 
-    //% block="drive %motorChoice motor(s) %motorDir with %power"
+    //% block="drive %motorChoice motor(s) %motorDir with pwr %power"
     //% power.min=0 power.max=100 power.defl=50
     export function driveIndef(motor: motorChoice, dir: motorDir, power: number) {
         stop();
