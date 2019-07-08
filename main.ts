@@ -126,7 +126,7 @@ namespace encMotor {
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor 
             }
-            basic.pause(150)
+            basic.pause(100)
         }
         stop()
         //basic.showNumber(_lerrTicks);
