@@ -80,7 +80,7 @@ namespace encMotor {
     let _lenc: DigitalPin;
     let _renc: DigitalPin;
     let _baseSp: number;
-    
+
     /**
      * Creates a robot and automtically set it to a variable
      * @param ratio gives the motor to wheel turn ratio eg:48
@@ -129,6 +129,9 @@ namespace encMotor {
             basic.pause(100)
         }
         stop()
+        basic.showNumber(_lerrTicks);
+        basic.showString("---");
+        basic.showNumber(_rerrTicks);
 
     }
 
