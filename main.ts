@@ -10,7 +10,7 @@ let _rerrTicks: number = 0;
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
-let _kp: number = 10;
+let _kp: number = 20;
 
 enum motorChoice {
     //% block="left"
@@ -126,7 +126,7 @@ namespace encMotor {
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor 
             }
-            basic.pause(100)
+            basic.pause(150)
         }
         stop()
         //basic.showNumber(_lerrTicks);
