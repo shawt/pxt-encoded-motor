@@ -154,7 +154,7 @@ namespace encMotor {
     }
 
     //% block="drive %motorChoice motor(s) %motorDir with %power"
-    //% power.max = 100
+    //% power.min = 0
     
     export function driveIndef(motor: motorChoice, dir: motorDir, power: number) {
         stop();
