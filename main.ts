@@ -10,6 +10,7 @@ let _rerrTicks: number = 0;
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
+let _kp: number = 30;
 
 enum motorChoice {
     //% block="left"
@@ -79,7 +80,7 @@ namespace encMotor {
     let _lenc: DigitalPin;
     let _renc: DigitalPin;
     let _baseSp: number;
-    let _kp: number = 10;
+    
     /**
      * Creates a robot and automtically set it to a variable
      * @param ratio gives the motor to wheel turn ratio eg:48
