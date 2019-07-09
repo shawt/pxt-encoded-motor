@@ -117,7 +117,7 @@ namespace encMotor {
         let correction = 0.0;
         if (motor == motorChoice.Both) {
             for(let i=0; i<=_baseSp; i++){
-                //motorGo(i, 8192, dir) //start right motor
+                motorGo(i, 8192, dir) //start right motor
                 motorGo(0, 8448, dir) //start left motor
             }
             
