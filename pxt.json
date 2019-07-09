@@ -1,6 +1,6 @@
 {
     "name": "pxt-encoded-motor",
-    "version": "0.0.138",
+    "version": "0.0.139",
     "description": "",
     "dependencies": {
         "core": "*",
