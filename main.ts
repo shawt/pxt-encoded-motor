@@ -116,8 +116,11 @@ namespace encMotor {
         let lSpeed = _baseSp;
         let correction = 0.0;
         if (motor == motorChoice.Both) {
-            motorGo(_baseSp, 8192, dir) //start right motor
-            motorGo(_baseSp, 8448, dir) //start left motor
+            for(let i=0; i<=_baseSp; i++){
+                motorGo(i, 8192, dir) //start right motor
+                motorGo(i, 8448, dir) //start left motor
+            }
+            
         }
         else { motorGo(50, motor, dir) }
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
