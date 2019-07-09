@@ -112,7 +112,7 @@ namespace encMotor {
         _rTicks = 0;
         _lerrTicks = 0;
         _rerrTicks = 0;
-        _baseSp = 45;
+        _baseSp = 35;
         let lSpeed = _baseSp;
         let correction = 0.0;
         if (motor == motorChoice.Both) {
