@@ -117,8 +117,11 @@ namespace encMotor {
         let correction = 0.0;
         if (motor == motorChoice.Both) {
             for (let i = 0; i <= _baseSp; i++) {
+                _rerrTicks = 0;
+                _lerrTicks = 0;
+                correction = (_rerrTicks - _lerrTicks) / _kp;
                 motorGo(i, 8192, dir) //start right motor
-                motorGo(i, 8448, dir) //start left motor
+                motorGo(i += correction, 8448, dir) //start left motor
                 basic.pause(100);
             }
 
@@ -126,12 +129,13 @@ namespace encMotor {
         else { motorGo(50, motor, dir) }
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
             if (motor == motorChoice.Both) {
+                _rerrTicks = 0;
+                _lerrTicks = 0;
                 basic.pause(100)
                 correction = (_rerrTicks - _lerrTicks) / _kp;
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor
-                _rerrTicks = 0;
-                _lerrTicks = 0;
+                
             }
 
         }
