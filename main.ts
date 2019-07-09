@@ -119,7 +119,7 @@ namespace encMotor {
             for (let i = 0; i <= _baseSp; i++) {
                 motorGo(i, 8192, dir) //start right motor
                 motorGo(i, 8448, dir) //start left motor
-                basic.pause(50);
+                basic.pause(100);
             }
 
         }
