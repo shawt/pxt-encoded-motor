@@ -10,7 +10,7 @@ let _rerrTicks: number = 0;
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
-let _kp: number = 4;
+let _kp: number = 15;
 
 enum motorChoice {
     //% block="left"
@@ -116,12 +116,12 @@ namespace encMotor {
         let lSpeed = _baseSp;
         let correction = 0.0;
         if (motor == motorChoice.Both) {
-            for(let i=0; i<=_baseSp; i++){
+            for (let i = 0; i <= _baseSp; i++) {
                 motorGo(i, 8192, dir) //start right motor
                 motorGo(i, 8448, dir) //start left motor
                 basic.pause(100);
             }
-            
+
         }
         else { motorGo(50, motor, dir) }
         while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
@@ -129,9 +129,9 @@ namespace encMotor {
                 correction = (_rerrTicks - _lerrTicks) / _kp;
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor
-                basic.pause(100) 
+                basic.pause(100)
             }
-            
+
         }
         stop()
 
