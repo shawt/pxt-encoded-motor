@@ -10,7 +10,7 @@ let _rerrTicks: number = 0;
 let _lenc: DigitalPin
 let _renc: DigitalPin
 let _partialTurn: number = 0.0
-let _kp: number = 20;
+let _kp: number = 4;
 
 enum motorChoice {
     //% block="left"
