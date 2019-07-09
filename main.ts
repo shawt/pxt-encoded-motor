@@ -112,14 +112,14 @@ namespace encMotor {
         _rTicks = 0;
         _lerrTicks = 0;
         _rerrTicks = 0;
-        _baseSp = 35;
+        _baseSp = 45;
         let lSpeed = _baseSp;
         let correction = 0.0;
         if (motor == motorChoice.Both) {
             for (let i = 0; i <= _baseSp; i++) {
                 motorGo(i, 8192, dir) //start right motor
                 motorGo(i, 8448, dir) //start left motor
-                basic.pause(100);
+                basic.pause(50);
             }
 
         }
