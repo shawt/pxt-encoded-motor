@@ -129,7 +129,9 @@ namespace encMotor {
                 correction = (_rerrTicks - _lerrTicks) / _kp;
                 lSpeed += correction;
                 motorGo(lSpeed, 8448, dir) //correct left motor
-                basic.pause(100)
+                basic.pause(150)
+                _rerrTicks = 0;
+                _lerrTicks = 0;
             }
 
         }
