@@ -11,8 +11,7 @@
         "main.ts",
         "motorEnc.ts",
         "gamerBit.ts",
-        "ultrasonic.ts",
-        "servo.ts"
+        "ultrasonic.ts"
     ],
     "testFiles": [
         "test.ts"
