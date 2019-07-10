@@ -129,7 +129,9 @@ namespace encMotor {
         }
         else { motorGo(50, motor, dir) 
         }
+while (_rTurns<3){
 
+}
        // while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
          //   if (motor == motorChoice.Both) {
          //       _rerrTicks = 0;
@@ -139,7 +141,7 @@ namespace encMotor {
          //       lSpeed += correction;
          //       motorGo(lSpeed, 8448, dir) //correct left motor
          //   }
-        basic.pause(3000);
+
         //}
         stop()
         basic.showNumber(_rTurns)
