@@ -130,10 +130,9 @@ namespace encMotor {
         else {
             motorGo(50, motor, dir)
         }
-        for(let n = 0; n<=10; n++){
-            basic.pause(1000);
-            basic.showNumber(Math.trunc(_rTurns));
-        }
+while(_rTurns < 3) {
+    basic.pause(100)
+}
         
         // while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
         //   if (motor == motorChoice.Both) {
