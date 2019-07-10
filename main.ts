@@ -135,7 +135,7 @@ namespace encMotor {
         while ((_lTurns < (rt + .05)) && (_rTurns < (rt + .05))) {
             _rerrTicks = 0;
             _lerrTicks = 0;
-            basic.pause(150)
+            basic.pause(100)
             if (motor == motorChoice.Both) {
                 correction = (_rerrTicks - _lerrTicks) / _kp;
                 lSpeed += correction;
