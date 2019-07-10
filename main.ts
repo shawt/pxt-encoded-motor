@@ -129,7 +129,7 @@ namespace encMotor {
         }
         else { motorGo(50, motor, dir) 
         }
-while (_rTurns<3){
+while (_rTurns < 1){
 
 }
        // while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
