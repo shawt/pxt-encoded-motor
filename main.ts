@@ -142,6 +142,7 @@ namespace encMotor {
         basic.pause(3000);
         //}
         stop()
+        basic.showNumber(_rTurns)
 
 
     }
