@@ -130,7 +130,7 @@ namespace encMotor {
         else {
             motorGo(50, motor, dir)
         }
-while(_rTurns < rt) {
+while((_rTurns < rt) && (_lTurns <rt)) {
     basic.pause(100)
 }
         
