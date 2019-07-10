@@ -129,9 +129,7 @@ namespace encMotor {
         }
         else { motorGo(50, motor, dir) 
         }
-while (_rTurns > 1){
-
-}
+basic.pause(10000)
        // while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
          //   if (motor == motorChoice.Both) {
          //       _rerrTicks = 0;
