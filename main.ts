@@ -127,18 +127,20 @@ namespace encMotor {
             }
 
         }
-        else { motorGo(50, motor, dir) }
-        while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
-            if (motor == motorChoice.Both) {
-                _rerrTicks = 0;
-                _lerrTicks = 0;
-                basic.pause(150)
-                correction = (_rerrTicks - _lerrTicks) / _kp;
-                lSpeed += correction;
-                motorGo(lSpeed, 8448, dir) //correct left motor
-            }
-
+        else { motorGo(50, motor, dir) 
         }
+
+       // while (_lTurns < (rt + .05) && _rTurns < (rt + .05)) {
+         //   if (motor == motorChoice.Both) {
+         //       _rerrTicks = 0;
+         //       _lerrTicks = 0;
+         //       basic.pause(150)
+         //       correction = (_rerrTicks - _lerrTicks) / _kp;
+         //       lSpeed += correction;
+         //       motorGo(lSpeed, 8448, dir) //correct left motor
+         //   }
+        basic.pause(3000);
+        //}
         stop()
 
 
