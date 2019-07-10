@@ -1,6 +1,7 @@
 // Add your code here
 /**
  * The pins used by SparkFun gamer:bit
+ * bump
  */
 //%
 enum GamerBitPin {
